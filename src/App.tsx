@@ -171,34 +171,44 @@ export default function App() {
 
 useEffect(() => {
   const audio = audioRef.current;
+  if (!audio) return;
 
-  async function startMusicOnce() {
-    if (!audio || !audio.paused) return;
+  let musicStarted = false;
+
+  async function startMusic() {
+    if (!audio || musicStarted || !audio.paused) return;
 
     try {
-      // if (audio.currentTime === 0) {
         audio.currentTime = 12;
-      // }
 
       await audio.play();
+
+      musicStarted = true;
       setMusicOn(true);
       setMusicError("");
 
-      window.removeEventListener("pointerdown", startMusicOnce);
-      window.removeEventListener("keydown", startMusicOnce);
+      // Eliminar eventos después de iniciar la música
+      window.removeEventListener("pointerdown", startMusic);
+      window.removeEventListener("keydown", startMusic);
+      window.removeEventListener("scroll", startMusic);
+      window.removeEventListener("touchmove", startMusic);
     } catch {
       setMusicOn(false);
     }
   }
 
-  void startMusicOnce();
+  void startMusic();
 
-  window.addEventListener("pointerdown", startMusicOnce);
-  window.addEventListener("keydown", startMusicOnce);
+  window.addEventListener("pointerdown", startMusic);
+  window.addEventListener("keydown", startMusic);
+  window.addEventListener("scroll", startMusic, { passive: true });
+  window.addEventListener("touchmove", startMusic, { passive: true });
 
   return () => {
-    window.removeEventListener("pointerdown", startMusicOnce);
-    window.removeEventListener("keydown", startMusicOnce);
+    window.removeEventListener("pointerdown", startMusic);
+    window.removeEventListener("keydown", startMusic);
+    window.removeEventListener("scroll", startMusic);
+    window.removeEventListener("touchmove", startMusic);
   };
 }, []);
 
