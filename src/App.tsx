@@ -167,54 +167,37 @@ export default function App() {
 
   const nombreInvitado = params.get("invitado")?.trim() || "Familia invitada";
 
-  const musicStartedRef = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
 
-    async function startMusic() {
-      if (!audio || musicStartedRef.current || !audio.paused) return;
+    async function startMusicOnce() {
+      if (!audio || !audio.paused) return;
 
       try {
-        // Adelantar la introducción una sola vez
-        audio.currentTime = 12;
+        if (audio.currentTime === 0) {
+          audio.currentTime = 12;
+        }
 
         await audio.play();
-        if (audio.paused) {
-          try {
-            await audio.play();
-            musicStartedRef.current = true;
-            setMusicOn(true);
-            setMusicError("");
-          } catch {
-            setMusicOn(false);
-            setMusicError(
-              "No se pudo reproducir la canción. Comprueba el archivo de audio.",
-            );
-          }
-        } else {
-          audio.pause();
-          setMusicOn(false);
-        }
-        musicStartedRef.current = true;
         setMusicOn(true);
         setMusicError("");
+
+        window.removeEventListener("pointerdown", startMusicOnce);
+        window.removeEventListener("keydown", startMusicOnce);
       } catch {
         setMusicOn(false);
       }
     }
 
-    // En móviles, touchstart detecta el primer contacto
-    // antes de que comience el desplazamiento.
-    window.addEventListener("touchstart", startMusic, { passive: true });
-    window.addEventListener("pointerdown", startMusic);
-    window.addEventListener("keydown", startMusic);
+    void startMusicOnce();
+
+    window.addEventListener("pointerdown", startMusicOnce);
+    window.addEventListener("keydown", startMusicOnce);
 
     return () => {
-      window.removeEventListener("touchstart", startMusic);
-      window.removeEventListener("pointerdown", startMusic);
-      window.removeEventListener("keydown", startMusic);
+      window.removeEventListener("pointerdown", startMusicOnce);
+      window.removeEventListener("keydown", startMusicOnce);
     };
   }, []);
 
