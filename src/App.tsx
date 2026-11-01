@@ -168,26 +168,39 @@ export default function App() {
 
   const nombreInvitado = params.get("invitado")?.trim() || "Familia invitada";
 
-  useEffect(() => {
-    async function loadWishes() {
-      if (supabase) {
-        const { data, error } = await supabase
-          .from("wishes")
-          .select("id,name,message,created_at")
-          .order("created_at", { ascending: false })
-          .limit(50);
-        if (!error && data) setWishes(data as Wish[]);
-        return;
-      }
-      try {
-        const stored = localStorage.getItem("wedding-demo-wishes");
-        if (stored) setWishes(JSON.parse(stored) as Wish[]);
-      } catch {
-        /* El almacenamiento local puede estar deshabilitado. */
-      }
+
+useEffect(() => {
+  const audio = audioRef.current;
+
+  async function startMusicOnce() {
+    if (!audio || !audio.paused) return;
+
+    try {
+      // if (audio.currentTime === 0) {
+        audio.currentTime = 12;
+      // }
+
+      await audio.play();
+      setMusicOn(true);
+      setMusicError("");
+
+      window.removeEventListener("pointerdown", startMusicOnce);
+      window.removeEventListener("keydown", startMusicOnce);
+    } catch {
+      setMusicOn(false);
     }
-    void loadWishes();
-  }, []);
+  }
+
+  void startMusicOnce();
+
+  window.addEventListener("pointerdown", startMusicOnce);
+  window.addEventListener("keydown", startMusicOnce);
+
+  return () => {
+    window.removeEventListener("pointerdown", startMusicOnce);
+    window.removeEventListener("keydown", startMusicOnce);
+  };
+}, []);
 
   async function submitWish(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
