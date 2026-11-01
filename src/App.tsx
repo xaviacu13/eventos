@@ -25,7 +25,6 @@ type Countdown = {
 
 const WEDDING_DATE = new Date("2026-12-19T19:00:00-03:00");
 
-
 const CONFIG = {
   couple: "José Luis & Norma",
   dateLabel: "Sábado 19 de diciembre de 2026",
@@ -168,49 +167,56 @@ export default function App() {
 
   const nombreInvitado = params.get("invitado")?.trim() || "Familia invitada";
 
+  const musicStartedRef = useRef(false);
 
-useEffect(() => {
-  const audio = audioRef.current;
-  if (!audio) return;
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
-  let musicStarted = false;
+    async function startMusic() {
+      if (!audio || musicStartedRef.current || !audio.paused) return;
 
-  async function startMusic() {
-    if (!audio || musicStarted || !audio.paused) return;
-
-    try {
+      try {
+        // Adelantar la introducción una sola vez
         audio.currentTime = 12;
 
-      await audio.play();
+        await audio.play();
+        if (audio.paused) {
+          try {
+            await audio.play();
+            musicStartedRef.current = true;
+            setMusicOn(true);
+            setMusicError("");
+          } catch {
+            setMusicOn(false);
+            setMusicError(
+              "No se pudo reproducir la canción. Comprueba el archivo de audio.",
+            );
+          }
+        } else {
+          audio.pause();
+          setMusicOn(false);
+        }
+        musicStartedRef.current = true;
+        setMusicOn(true);
+        setMusicError("");
+      } catch {
+        setMusicOn(false);
+      }
+    }
 
-      musicStarted = true;
-      setMusicOn(true);
-      setMusicError("");
+    // En móviles, touchstart detecta el primer contacto
+    // antes de que comience el desplazamiento.
+    window.addEventListener("touchstart", startMusic, { passive: true });
+    window.addEventListener("pointerdown", startMusic);
+    window.addEventListener("keydown", startMusic);
 
-      // Eliminar eventos después de iniciar la música
+    return () => {
+      window.removeEventListener("touchstart", startMusic);
       window.removeEventListener("pointerdown", startMusic);
       window.removeEventListener("keydown", startMusic);
-      window.removeEventListener("scroll", startMusic);
-      window.removeEventListener("touchmove", startMusic);
-    } catch {
-      setMusicOn(false);
-    }
-  }
-
-  void startMusic();
-
-  window.addEventListener("pointerdown", startMusic);
-  window.addEventListener("keydown", startMusic);
-  window.addEventListener("scroll", startMusic, { passive: true });
-  window.addEventListener("touchmove", startMusic, { passive: true });
-
-  return () => {
-    window.removeEventListener("pointerdown", startMusic);
-    window.removeEventListener("keydown", startMusic);
-    window.removeEventListener("scroll", startMusic);
-    window.removeEventListener("touchmove", startMusic);
-  };
-}, []);
+    };
+  }, []);
 
   async function submitWish(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -396,9 +402,7 @@ useEffect(() => {
             </figure>
           ))}
         </div>
-        <p className="small-note">
-          Estas son imágenes de muestra.
-        </p>
+        <p className="small-note">Estas son imágenes de muestra.</p>
       </section>
 
       <section className="events section">
