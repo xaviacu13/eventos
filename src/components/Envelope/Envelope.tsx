@@ -34,7 +34,7 @@ const Envelope = ({
           <SealContainer>
             <Box component="img" src={sello} alt="Sello de lacre" />
           </SealContainer>
-          <GuestMessage >Con mucho cariño, para:</GuestMessage>
+          <GuestMessage >Para:</GuestMessage>
 
           <GuestContainer>
              {nombreInvitado}

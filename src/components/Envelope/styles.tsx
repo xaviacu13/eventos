@@ -89,20 +89,20 @@ export const GuestContainer = styled("div")({
   position: "absolute",
   bottom: "10%",
   width: "85%",
-  textAlign: "center",
+  textAlign: "left",
   color: "#2c020c",
   fontFamily: "Georgia, serif",
-  fontSize: "2.5rem",
+  fontSize: "2rem",
 });
 
 export const GuestMessage = styled(Typography)({
   position: "absolute",
-  bottom: "20%",
+  bottom: "19%",
   width: "85%",
   fontFamily: "Georgia, serif",
-  fontSize: "1.8rem",
+  fontSize: "1rem",
   fontWeight: 400,
-  textAlign: "center",
+  textAlign: "left",
   color: "#140106",
   margin: 0,
 });
