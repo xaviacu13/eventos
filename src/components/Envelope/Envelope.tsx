@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   EnvelopeBackground,
   EnvelopeContainer,
@@ -9,7 +9,6 @@ import {
   GuestMessage,
   GuestInfoContainer,
 } from "./styles";
-//import sobreBoda from "../../assets/images/invite/sobre.png";
 import sello from "../../assets/images/invite/sello.webp";
 
 interface EnvelopeProps {
