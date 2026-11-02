@@ -55,12 +55,12 @@ export const CoupleName = styled("h1")({
   margin: 0,
   textAlign: "center",
   color: "#2c020c",
-  fontFamily: "Georgia, serif",
+  fontFamily: "'Alex Brush', cursive",
   fontSize: "4rem",
-  fontWeight: 500,
+  fontWeight: 400,
 
   "@media (max-width: 360px)": {
-    fontSize: "1.6rem",
+    fontSize: "3rem",
   },
 });
 
@@ -91,13 +91,13 @@ export const GuestContainer = styled("div")({
   width: "85%",
   textAlign: "left",
   color: "#2c020c",
-  fontFamily: "Georgia, serif",
+  fontFamily: "'Alex Brush', cursive",
   fontSize: "2rem",
 });
 
 export const GuestMessage = styled(Typography)({
   position: "absolute",
-  bottom: "19%",
+  bottom: "23%",
   width: "85%",
   fontFamily: "Georgia, serif",
   fontSize: "1rem",
