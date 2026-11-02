@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 import sobreBoda from "../../assets/images/invite/sobre.png";
-import { Typography } from "@mui/material";
-
 
 export const EnvelopeBackground = styled("main")({
   width: "100%",
@@ -86,23 +84,37 @@ export const SealContainer = styled("div")({
 });
 
 export const GuestContainer = styled("div")({
-  position: "absolute",
-  bottom: "10%",
-  width: "85%",
-  textAlign: "left",
-  color: "#2c020c",
+  width: "100%",
   fontFamily: "'Alex Brush', cursive",
+  textAlign: "left",
+  margin: 0,
   fontSize: "2rem",
+  fontWeight: 400,
+  lineHeight: 1.1,
+  overflowWrap: "anywhere",
 });
 
-export const GuestMessage = styled(Typography)({
-  position: "absolute",
-  bottom: "23%",
-  width: "85%",
+export const GuestMessage = styled("div")({
+  display: "flex",
   fontFamily: "Georgia, serif",
-  fontSize: "1rem",
+  fontSize: "1.7rem",
   fontWeight: 400,
   textAlign: "left",
   color: "#140106",
   margin: 0,
+});
+
+export const GuestInfoContainer = styled("div")({
+  display: "flex",
+  position: "absolute",
+  bottom: "10%",
+  left: "50%",
+  transform: "translateX(-50%)",
+  width: "85%",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  justifyContent: "center",
+  textAlign: "left",
+  gap: "5px",
+  color: "#2c020c",
 });

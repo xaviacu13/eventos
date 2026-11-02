@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import {
   EnvelopeBackground,
   EnvelopeContainer,
@@ -7,6 +7,7 @@ import {
   SealContainer,
   GuestContainer,
   GuestMessage,
+  GuestInfoContainer,
 } from "./styles";
 //import sobreBoda from "../../assets/images/invite/sobre.png";
 import sello from "../../assets/images/invite/sello.webp";
@@ -30,15 +31,13 @@ const Envelope = ({
       <EnvelopeContainer>
         <EnvelopeContent>
           <CoupleName>{coupleName}</CoupleName>
-
           <SealContainer>
             <Box component="img" src={sello} alt="Sello de lacre" />
           </SealContainer>
-          <GuestMessage >Para:</GuestMessage>
-
-          <GuestContainer>
-             {nombreInvitado}
-          </GuestContainer>
+          <GuestInfoContainer>
+            <GuestMessage>Para:</GuestMessage>
+            <GuestContainer>{nombreInvitado}</GuestContainer>
+          </GuestInfoContainer>
         </EnvelopeContent>
       </EnvelopeContainer>
     </EnvelopeBackground>
