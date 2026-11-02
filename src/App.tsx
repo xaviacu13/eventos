@@ -13,7 +13,8 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
-import { Envelope } from "./components";
+import { Envelope, WeddingPicture } from "./components";
+import weddingPicture from "./assets/images/profiles/weddingpicture.png";
 import { supabase } from "./lib/supabase";
 
 type Wish = { id?: number; name: string; message: string; created_at?: string };
@@ -141,6 +142,7 @@ export default function App() {
   const [showRsvp, setShowRsvp] = useState(false);
   const [musicOn, setMusicOn] = useState(false);
   const [musicError, setMusicError] = useState("");
+  const [isOpenCard, setIsOpenCard] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   async function toggleMusic() {
@@ -164,43 +166,64 @@ export default function App() {
     }
   }
 
+  async function openInvitation() {
+    setIsOpenCard(true);
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      if (audio.currentTime === 0) {
+        audio.currentTime = 12;
+      }
+
+      await audio.play();
+      setMusicOn(true);
+      setMusicError("");
+    } catch {
+      setMusicOn(false);
+      setMusicError(
+        "No se pudo reproducir la música. Puedes activarla desde el botón.",
+      );
+    }
+  }
+
   const params = new URLSearchParams(window.location.search);
 
   const nombreInvitado = params.get("invitado")?.trim() || "Familia invitada";
 
+  // useEffect(() => {
+  //   const audio = audioRef.current;
 
-  useEffect(() => {
-    const audio = audioRef.current;
+  //   async function startMusicOnce() {
+  //     if (!audio || !audio.paused) return;
 
-    async function startMusicOnce() {
-      if (!audio || !audio.paused) return;
+  //     try {
+  //       if (audio.currentTime === 0) {
+  //         audio.currentTime = 12;
+  //       }
 
-      try {
-        if (audio.currentTime === 0) {
-          audio.currentTime = 12;
-        }
+  //       await audio.play();
+  //       setMusicOn(true);
+  //       setMusicError("");
 
-        await audio.play();
-        setMusicOn(true);
-        setMusicError("");
+  //       window.removeEventListener("pointerdown", startMusicOnce);
+  //       window.removeEventListener("keydown", startMusicOnce);
+  //     } catch {
+  //       setMusicOn(false);
+  //     }
+  //   }
 
-        window.removeEventListener("pointerdown", startMusicOnce);
-        window.removeEventListener("keydown", startMusicOnce);
-      } catch {
-        setMusicOn(false);
-      }
-    }
+  //   void startMusicOnce();
 
-    void startMusicOnce();
+  //   window.addEventListener("pointerdown", startMusicOnce);
+  //   window.addEventListener("keydown", startMusicOnce);
 
-    window.addEventListener("pointerdown", startMusicOnce);
-    window.addEventListener("keydown", startMusicOnce);
-
-    return () => {
-      window.removeEventListener("pointerdown", startMusicOnce);
-      window.removeEventListener("keydown", startMusicOnce);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("pointerdown", startMusicOnce);
+  //     window.removeEventListener("keydown", startMusicOnce);
+  //   };
+  // }, []);
 
   async function submitWish(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -254,7 +277,15 @@ export default function App() {
 
   return (
     <main>
-      <Envelope coupleName={CONFIG.couple} guestName={nombreInvitado} />
+      {!isOpenCard ? (
+        <Envelope
+          coupleName={CONFIG.couple}
+          guestName={nombreInvitado}
+          setOpenCard={openInvitation}
+        />
+      ) : (
+      <WeddingPicture image={weddingPicture} />
+      )}
       <audio
         ref={audioRef}
         id="wedding-audio"
@@ -263,15 +294,17 @@ export default function App() {
         preload="none"
         onEnded={() => setMusicOn(false)}
       />
-      <button
-        className={`music-button ${musicOn ? "is-playing" : ""}`}
-        onClick={toggleMusic}
-        aria-label={musicOn ? "Pausar música" : "Reproducir música"}
-      >
-        {musicOn ? <Pause size={17} /> : <Play size={17} />}
-        <Music2 size={17} />
-        <span>{musicOn ? "Música activada" : "Reproducir música"}</span>
-      </button>
+      {isOpenCard && (
+        <button
+          className={`music-button ${musicOn ? "is-playing" : ""}`}
+          onClick={toggleMusic}
+          aria-label={musicOn ? "Pausar música" : "Reproducir música"}
+        >
+          {musicOn ? <Pause size={17} /> : <Play size={17} />}
+          <Music2 size={17} />
+          <span>{musicOn ? "Música activada" : "Reproducir música"}</span>
+        </button>
+      )}
 
       {musicError && (
         <p role="status" className="form-status">

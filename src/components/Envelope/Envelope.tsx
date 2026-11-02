@@ -14,12 +14,14 @@ import sello from "../../assets/images/invite/sello.webp";
 interface EnvelopeProps {
   coupleName?: string;
   guestName?: string;
+  setOpenCard: (open: boolean) => void;
 }
 
 const Envelope = ({
   coupleName = "José Luis & Norma",
   guestName,
-}: EnvelopeProps) => {
+  setOpenCard,
+}: EnvelopeProps & { setOpenCard: (open: boolean) => void }) => {
   const params = new URLSearchParams(window.location.search);
 
   const nombreInvitado =
@@ -30,7 +32,7 @@ const Envelope = ({
       <EnvelopeContainer>
         <EnvelopeContent>
           <CoupleName>{coupleName}</CoupleName>
-          <SealContainer>
+          <SealContainer onClick={() => setOpenCard(true)}>
             <Box component="img" src={sello} alt="Sello de lacre" />
           </SealContainer>
           <GuestInfoContainer>
