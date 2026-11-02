@@ -13,6 +13,7 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
+import { Envelope } from "./components";
 import { supabase } from "./lib/supabase";
 
 type Wish = { id?: number; name: string; message: string; created_at?: string };
@@ -253,6 +254,7 @@ export default function App() {
 
   return (
     <main>
+      <Envelope coupleName={CONFIG.couple} guestName={nombreInvitado} />
       <audio
         ref={audioRef}
         id="wedding-audio"
