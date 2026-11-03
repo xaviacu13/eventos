@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 import SwipeDownIcon from "@mui/icons-material/SwipeDown";
-import { Typography } from "@mui/material";
 
 import { CONFIG } from "../../config/joseloNorma";
 
