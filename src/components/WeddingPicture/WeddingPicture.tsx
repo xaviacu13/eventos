@@ -87,6 +87,7 @@ export default function WeddingPicture({
             Tenemos el honor de invitarte a compartir con nosotros uno de los momentos más especiales de nuestras vidas.
           </InvitationDescription>
            <HeroDate>{CONFIG.dateLabel}</HeroDate>
+            <HeroBottom>LA CUENTA REGRESIVA COMIENZA</HeroBottom>
 
         <Countdown />
         </HeroContent>
@@ -102,7 +103,7 @@ export default function WeddingPicture({
         )}
       
 
-        <HeroBottom>CON TODO NUESTRO AMOR</HeroBottom>
+        {/* <HeroBottom>CON TODO NUESTRO AMOR</HeroBottom> */}
       </PictureContainer>
     </PictureBackground>
   );

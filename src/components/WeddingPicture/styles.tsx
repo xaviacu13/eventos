@@ -54,7 +54,7 @@ export const HeroContent = styled(Box)({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: "15px",
-  paddingBottom: "50px",
+  //paddingBottom: "50px",
   textAlign: "center",
   color: "#fff",
   gap: "12px",
@@ -172,8 +172,8 @@ export const DiscoverButton = styled(Button)({
 });
 
 export const HeroBottom = styled(Typography)({
-  position: "absolute",
-  bottom: "22px",
+  //position: "absolute",
+  //bottom: "22px",
   left: 0,
   width: "100%",
   zIndex: 2,

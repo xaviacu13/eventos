@@ -30,7 +30,7 @@ export const CountdownUnit = styled(Box)({
 
 export const CountdownNumber = styled(Typography)({
   fontFamily: "Georgia, serif",
-  fontSize: "1.7rem",
+  fontSize: "1.3rem",
   fontWeight: 600,
   color: "#F5D76E",
   lineHeight: 1.2,
@@ -38,7 +38,7 @@ export const CountdownNumber = styled(Typography)({
 
 export const CountdownLabel = styled(Typography)({
   fontFamily: "Georgia, serif",
-  fontSize: "0.65rem",
+  fontSize: "0.45rem",
   color: "#FFF5C4",
   letterSpacing: "1px",
   textTransform: "uppercase",
