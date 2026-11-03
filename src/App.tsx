@@ -14,7 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Envelope, WeddingPicture } from "./components";
-import weddingPicture from "./assets/images/profiles/weddingpicture.png";
+import weddingPicture from "./assets/images/profiles/weddingpicture2.png";
 import { supabase } from "./lib/supabase";
 
 type Wish = { id?: number; name: string; message: string; created_at?: string };
@@ -192,38 +192,6 @@ export default function App() {
 
   const nombreInvitado = params.get("invitado")?.trim() || "Familia invitada";
 
-  // useEffect(() => {
-  //   const audio = audioRef.current;
-
-  //   async function startMusicOnce() {
-  //     if (!audio || !audio.paused) return;
-
-  //     try {
-  //       if (audio.currentTime === 0) {
-  //         audio.currentTime = 12;
-  //       }
-
-  //       await audio.play();
-  //       setMusicOn(true);
-  //       setMusicError("");
-
-  //       window.removeEventListener("pointerdown", startMusicOnce);
-  //       window.removeEventListener("keydown", startMusicOnce);
-  //     } catch {
-  //       setMusicOn(false);
-  //     }
-  //   }
-
-  //   void startMusicOnce();
-
-  //   window.addEventListener("pointerdown", startMusicOnce);
-  //   window.addEventListener("keydown", startMusicOnce);
-
-  //   return () => {
-  //     window.removeEventListener("pointerdown", startMusicOnce);
-  //     window.removeEventListener("keydown", startMusicOnce);
-  //   };
-  // }, []);
 
   async function submitWish(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -284,7 +252,7 @@ export default function App() {
           setOpenCard={openInvitation}
         />
       ) : (
-      <WeddingPicture image={weddingPicture} />
+      <WeddingPicture image={weddingPicture} nombreInvitado={nombreInvitado} />
       )}
       <audio
         ref={audioRef}

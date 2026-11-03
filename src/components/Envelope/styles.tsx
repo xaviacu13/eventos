@@ -24,7 +24,6 @@ export const EnvelopeContainer = styled("section")({
   maxWidth: "430px",
   height: "100dvh",
   overflow: "hidden",
-
   backgroundImage: `url(${sobreBoda})`,
   backgroundSize: "100% 100%",
   backgroundPosition: "center",
@@ -70,6 +69,7 @@ export const SealContainer = styled("div")({
   height: "115px",
   transform: "translate(-50%, -50%)",
   zIndex: 2,
+  cursor: "pointer",
 
   img: {
     width: "100%",
@@ -117,4 +117,49 @@ export const GuestInfoContainer = styled("div")({
   textAlign: "left",
   gap: "5px",
   color: "#2c020c",
+});
+
+export const FingerContainer = styled("div")({
+  position: "absolute",
+  top: "50px",
+  left: "-25%",
+  transform: "translateX(-50%)",
+  zIndex: 3,
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "5px",
+
+  color: "#fff",
+  pointerEvents: "none",
+
+  animation: "fingerAnimation 1.2s ease-in-out infinite",
+
+  svg: {
+    fontSize: "48px",
+    filter: "drop-shadow(0 3px 5px rgba(0,0,0,0.7))",
+  },
+
+  "@keyframes fingerAnimation": {
+    "0%, 100%": {
+      transform: "translateY(0) scale(1)",
+    },
+    "50%": {
+      transform: "translateY(8px) scale(0.9)",
+    },
+  },
+});
+
+export const FingerMessage = styled("span")({
+  fontFamily: "Georgia, serif",
+  fontSize: "0.85rem",
+  fontWeight: 600,
+  whiteSpace: "nowrap",
+  color: "#fff",
+  textShadow: "0 2px 5px rgba(0,0,0,0.9)",
+  backgroundColor: "rgba(44, 2, 12, 0.65)",
+  padding: "5px 12px",
+  borderRadius: "20px",
+  letterSpacing: "0.3px",
 });
