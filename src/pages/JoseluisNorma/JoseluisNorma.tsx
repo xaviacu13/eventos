@@ -168,12 +168,12 @@ const JoseluisNorma = () => {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [wishStatus, setWishStatus] = useState("");
 
-  const [rsvpName, setRsvpName] = useState("");
-  const [rsvpGuests, setRsvpGuests] = useState("1");
-  const [rsvpAnswer, setRsvpAnswer] = useState("Sí, allí estaré");
-  const [rsvpStatus, setRsvpStatus] = useState("");
+  // const [rsvpName, setRsvpName] = useState("");
+  // const [rsvpGuests, setRsvpGuests] = useState("1");
+  // const [rsvpAnswer, setRsvpAnswer] = useState("Sí, allí estaré");
+  // const [rsvpStatus, setRsvpStatus] = useState("");
 
-  const [showRsvp, setShowRsvp] = useState(false);
+  // const [showRsvp, setShowRsvp] = useState(false);
   const [musicOn, setMusicOn] = useState(false);
   const [musicError, setMusicError] = useState("");
   const [isOpenCard, setIsOpenCard] = useState(false);
@@ -283,22 +283,22 @@ const JoseluisNorma = () => {
     );
   }
 
-  async function submitRsvp(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+//   async function submitRsvp(event: FormEvent<HTMLFormElement>) {
+//     event.preventDefault();
 
-    const message = `Confirmación de asistencia a la boda
-Nombre: ${rsvpName.trim()}
-Respuesta: ${rsvpAnswer}
-Cantidad de personas: ${rsvpGuests}`;
+//     const message = `Confirmación de asistencia a la boda
+// Nombre: ${rsvpName.trim()}
+// Respuesta: ${rsvpAnswer}
+// Cantidad de personas: ${rsvpGuests}`;
 
-    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+//     const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
-    window.open(url, "_blank", "noopener,noreferrer");
+//     window.open(url, "_blank", "noopener,noreferrer");
 
-    setRsvpStatus(
-      "Se abrió WhatsApp para que puedas enviar la confirmación. Configura el número de contacto de los novios antes de publicar.",
-    );
-  }
+//     setRsvpStatus(
+//       "Se abrió WhatsApp para que puedas enviar la confirmación. Configura el número de contacto de los novios antes de publicar.",
+//     );
+//   }
 
   return (
     <>
