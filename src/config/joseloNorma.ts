@@ -3,7 +3,7 @@ import local from "../assets/images/sponsors/local.png";
 import torta from "../assets/images/sponsors/torta.png";
 import decoracion from "../assets/images/sponsors/decoracion.png";
 import decoracion2 from "../assets/images/sponsors/decoracion2.png";
-import foto_video from "../assets/images/sponsors/default.png";
+import foto_video from "../assets/images/sponsors/foto_video.png";
 import sonido from "../assets/images/sponsors/sonido.png";
 import ministerio from "../assets/images/sponsors/ministerio.png";
 import invitacion from "../assets/images/sponsors/invitacion.png";
@@ -100,7 +100,7 @@ export const CONFIG: {
     {
       id: 6,
       title: "Padrinos de foto y video",
-      names: ["Nicolás Mancilla", "Lourdes Villca"],
+      names: ["Gabriel Marcelo Villca Cruz"],
       image: foto_video,
       imagePosition: "left",
     },
