@@ -96,7 +96,233 @@ export function JoseloNormaStyles() {
         .joselo-norma-page .muted {
           color: var(--muted);
         }
+        /* Corazones flotantes */
 
+        /* =========================================
+   CORAZONES FLOTANTES
+========================================= */
+
+        .joselo-norma-page .floating-hearts {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          z-index: 20;
+        }
+
+        .joselo-norma-page .floating-hearts span {
+          position: absolute;
+          bottom: -60px;
+          left: var(--left);
+
+          color: var(--burgundy);
+          font-size: var(--size);
+          opacity: 0;
+
+          filter: blur(var(--blur)) drop-shadow(0 2px 4px #74394a20);
+
+          animation:
+            jn-heart-float var(--duration) linear infinite,
+            jn-heart-sway var(--sway-duration) ease-in-out infinite alternate,
+            jn-heart-rotate var(--rotate-duration) ease-in-out infinite
+              alternate;
+
+          animation-delay: var(--delay);
+        }
+
+        /* =========================================
+   POSICIONES Y TAMAÑOS
+========================================= */
+
+        .joselo-norma-page .floating-hearts span:nth-child(1) {
+          --left: 4%;
+          --size: 17px;
+          --duration: 13s;
+          --sway-duration: 3.5s;
+          --rotate-duration: 4s;
+          --delay: 0s;
+          --blur: 0px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(2) {
+          --left: 12%;
+          --size: 27px;
+          --duration: 16s;
+          --sway-duration: 4.5s;
+          --rotate-duration: 5s;
+          --delay: 4s;
+          --blur: 0.3px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(3) {
+          --left: 21%;
+          --size: 13px;
+          --duration: 11s;
+          --sway-duration: 3s;
+          --rotate-duration: 3.5s;
+          --delay: 7s;
+          --blur: 0.5px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(4) {
+          --left: 30%;
+          --size: 23px;
+          --duration: 15s;
+          --sway-duration: 4s;
+          --rotate-duration: 4.5s;
+          --delay: 2s;
+          --blur: 0px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(5) {
+          --left: 39%;
+          --size: 16px;
+          --duration: 12s;
+          --sway-duration: 3.8s;
+          --rotate-duration: 5s;
+          --delay: 6s;
+          --blur: 0.4px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(6) {
+          --left: 48%;
+          --size: 31px;
+          --duration: 17s;
+          --sway-duration: 4.5s;
+          --rotate-duration: 6s;
+          --delay: 9s;
+          --blur: 0.5px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(7) {
+          --left: 57%;
+          --size: 14px;
+          --duration: 11.5s;
+          --sway-duration: 3.2s;
+          --rotate-duration: 4s;
+          --delay: 3s;
+          --blur: 0px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(8) {
+          --left: 66%;
+          --size: 25px;
+          --duration: 15.5s;
+          --sway-duration: 4.2s;
+          --rotate-duration: 5s;
+          --delay: 8s;
+          --blur: 0.3px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(9) {
+          --left: 75%;
+          --size: 18px;
+          --duration: 12.5s;
+          --sway-duration: 3.5s;
+          --rotate-duration: 4.5s;
+          --delay: 5s;
+          --blur: 0.2px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(10) {
+          --left: 83%;
+          --size: 29px;
+          --duration: 17s;
+          --sway-duration: 4.8s;
+          --rotate-duration: 6s;
+          --delay: 11s;
+          --blur: 0.5px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(11) {
+          --left: 91%;
+          --size: 15px;
+          --duration: 13.5s;
+          --sway-duration: 3.8s;
+          --rotate-duration: 4s;
+          --delay: 6s;
+          --blur: 0.3px;
+        }
+
+        .joselo-norma-page .floating-hearts span:nth-child(12) {
+          --left: 97%;
+          --size: 22px;
+          --duration: 14.5s;
+          --sway-duration: 4.2s;
+          --rotate-duration: 5s;
+          --delay: 10s;
+          --blur: 0px;
+        }
+
+        /* =========================================
+   MOVIMIENTO VERTICAL
+========================================= */
+
+        @keyframes jn-heart-float {
+          0% {
+            transform: translateY(0) scale(0.65);
+            opacity: 0;
+          }
+
+          10% {
+            opacity: 0.35;
+          }
+
+          30% {
+            opacity: 0.55;
+          }
+
+          60% {
+            opacity: 0.45;
+          }
+
+          85% {
+            opacity: 0.25;
+          }
+
+          100% {
+            transform: translateY(-115vh) scale(1);
+            opacity: 0;
+          }
+        }
+
+        /* =========================================
+   MOVIMIENTO LATERAL
+========================================= */
+
+        @keyframes jn-heart-sway {
+          0% {
+            margin-left: -20px;
+          }
+
+          50% {
+            margin-left: 22px;
+          }
+
+          100% {
+            margin-left: -15px;
+          }
+        }
+
+        /* =========================================
+   PEQUEÑA ROTACIÓN
+========================================= */
+
+        @keyframes jn-heart-rotate {
+          0% {
+            rotate: -8deg;
+          }
+
+          50% {
+            rotate: 5deg;
+          }
+
+          100% {
+            rotate: -6deg;
+          }
+        }
         /* Música */
 
         .joselo-norma-page .music-button {
@@ -249,7 +475,9 @@ export function JoseloNormaStyles() {
           letter-spacing: 0.02em;
           text-decoration: none;
           cursor: pointer;
-          transition: transform 0.2s, background 0.2s;
+          transition:
+            transform 0.2s,
+            background 0.2s;
         }
 
         .joselo-norma-page .button:hover {
@@ -768,9 +996,8 @@ export const CounselorsContainer = styled("div")({
   margin: "25px auto",
   padding: "10px",
   textAlign: "center",
-
-})
- export const  LocationContainer = styled("div")({
+});
+export const LocationContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   width: "100%",
@@ -779,5 +1006,4 @@ export const CounselorsContainer = styled("div")({
   padding: "10px",
   gap: "2rem",
   textAlign: "center",
-
-})
+});

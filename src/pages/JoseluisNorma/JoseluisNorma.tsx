@@ -213,6 +213,20 @@ const JoseluisNorma = () => {
       <JoseloNormaStyles />
 
       <main className="joselo-norma-page">
+        <div className="floating-hearts" aria-hidden="true">
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+          <span>♥</span>
+        </div>
         {!isOpenCard ? (
           <Envelope
             coupleName={CONFIG.couple}
