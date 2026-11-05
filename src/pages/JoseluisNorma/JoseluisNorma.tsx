@@ -29,7 +29,11 @@ import { CONFIG } from "../../config/joseloNorma";
 
 import { supabase } from "../../lib/supabase";
 
-import { JoseloNormaStyles, CounselorsContainer, LocationContainer  } from "./styles";
+import {
+  JoseloNormaStyles,
+  CounselorsContainer,
+  LocationContainer,
+} from "./styles";
 
 type Wish = {
   id?: number;
@@ -270,232 +274,234 @@ const JoseluisNorma = () => {
 
               <div className="hero-bottom">CON TODO NUESTRO AMOR</div>
             </section>
+            {/* </>
+        )} */}
+            {/* CONSEJEROS  */}
+
+            <CounselorsContainer>
+              <p className="hero-kicker">
+                <span />
+                NUESTOS CONSEJEROS:
+                <span />
+              </p>
+              <Counselors
+                title="CONSEJEROS DE LA IGLESIA"
+                image={conIglesia}
+                names={["Javier Villca Moscoso", "Basilia Mamani Acuña"]}
+              />
+              <HeartDivider width="280px" size={22} />
+              <Counselors
+                title="CONSEJEROS CIVILES"
+                image={conCivil}
+                names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
+              />
+            </CounselorsContainer>
+
+            {/* PADRINOS */}
+            <section className="sponsors-section section">
+              <p className="hero-kicker">
+                <span />
+                NUESTROS PADRINOS
+                <span />
+              </p>
+
+              {CONFIG.sponsors.map((sponsor, index) => (
+                <div key={sponsor.id}>
+                  <Sponsors
+                    title={sponsor.title}
+                    names={sponsor.names}
+                    image={sponsor.image}
+                    imagePosition={sponsor.imagePosition || "left"}
+                  />
+
+                  {index < CONFIG.sponsors.length - 1 && (
+                    <HeartDivider width="220px" size={20} />
+                  )}
+                </div>
+              ))}
+            </section>
+
+            <section className="intro section" id="invitacion">
+              <p className="eyebrow">UN DÍA PARA RECORDAR</p>
+
+              <h2>
+                ¡Nos encantaría
+                <br />
+                <em>compartirlo contigo!</em>
+              </h2>
+
+              <p className="body-copy">
+                Hay momentos que se vuelven inolvidables cuando los compartimos
+                con las personas que queremos. Nos hace mucha ilusión invitarte
+                a celebrar el comienzo de esta nueva etapa de nuestras vidas.
+              </p>
+
+              <div className="date-chip">
+                <CalendarDays size={19} />
+                <span>{CONFIG.dateLabel}</span>
+                <i />
+                <Clock3 size={18} />
+                <span>{CONFIG.timeLabel}</span>
+              </div>
+            </section>
+
+            {/* CUENTA REGRESIVA */}
+
+            <section className="countdown-section section">
+              <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
+
+              <h2>Falta muy poco</h2>
+
+              <Countdown />
+
+              <p className="small-note">
+                Cada segundo nos acerca a un día muy especial.
+              </p>
+            </section>
+
+            {/* GALERÍA */}
+
+            <section className="gallery-section section">
+              <div className="section-heading">
+                <p className="eyebrow">
+                  <Camera size={15} />
+                  NUESTROS MOMENTOS
+                </p>
+
+                <h2>
+                  Recuerdos que cuentan
+                  <br />
+                  <em>nuestra historia</em>
+                </h2>
+              </div>
+              <Hero images={CONFIG.gallery} />
+            </section>
+
+            {/* UBICACIONES */}
+
+            <section className="events section">
+              <p className="eyebrow">NOS ENCONTRAMOS EN</p>
+
+              <h2>
+                Un día, <em>dos momentos</em>
+              </h2>
+              <LocationContainer>
+                <EventLocation
+                  kind="CEREMONIA"
+                  title={CONFIG.churchName}
+                  address={CONFIG.churchAddress}
+                  url={CONFIG.churchMapsUrl}
+                  time="19:00 h"
+                />
+
+                <EventLocation
+                  kind="CELEBRACIÓN"
+                  title={CONFIG.venueName}
+                  address={CONFIG.venueAddress}
+                  url={CONFIG.venueMapsUrl}
+                  time="21:00 h"
+                />
+              </LocationContainer>
+            </section>
+
+            {/* BUENOS DESEOS */}
+
+            <section className="wishes-section section">
+              <p className="eyebrow">PALABRAS DESDE EL CORAZÓN</p>
+
+              <h2>
+                Déjanos tus <em>buenos deseos</em>
+              </h2>
+
+              <p className="body-copy">
+                Nos encantará guardar tus palabras como parte de este recuerdo.
+              </p>
+
+              <form className="form wishes-form" onSubmit={submitWish}>
+                <label>
+                  Tu nombre
+                  <input
+                    required
+                    value={wishName}
+                    onChange={(event) => setWishName(event.target.value)}
+                    placeholder="¿Quién nos escribe?"
+                    maxLength={80}
+                  />
+                </label>
+
+                <label>
+                  Tu mensaje
+                  <textarea
+                    required
+                    value={wishMessage}
+                    onChange={(event) => setWishMessage(event.target.value)}
+                    placeholder="Escribe aquí tus buenos deseos..."
+                    rows={4}
+                    maxLength={500}
+                  />
+                </label>
+
+                <div className="form-footer">
+                  <span>{wishMessage.length}/500</span>
+
+                  <button className="button button-dark" type="submit">
+                    Enviar mensaje <Send size={15} />
+                  </button>
+                </div>
+
+                {wishStatus && (
+                  <p className="form-status" role="status">
+                    {wishStatus}
+                  </p>
+                )}
+              </form>
+
+              <div className="wishes-list">
+                {wishes.length === 0 ? (
+                  <p className="empty-wishes">
+                    Sé la primera persona en dejarnos un mensaje.
+                  </p>
+                ) : (
+                  wishes.map((wish) => (
+                    <article
+                      className="wish"
+                      key={wish.id ?? `${wish.name}-${wish.message}`}
+                    >
+                      <div className="wish-heart">
+                        <Heart size={17} />
+                      </div>
+
+                      <div>
+                        <h3>{wish.name}</h3>
+                        <p>{wish.message}</p>
+                      </div>
+                    </article>
+                  ))
+                )}
+              </div>
+
+              {!supabase && (
+                <p className="small-note">
+                  Modo de demostración: los mensajes no se comparten entre
+                  dispositivos hasta conectar la base de datos.
+                </p>
+              )}
+            </section>
+            {/* PIE DE PÁGINA */}
+
+            <footer className="footer">
+              <Heart size={20} />
+
+              <p className="script">Con amor,</p>
+              <h2>{CONFIG.couple}</h2>
+              <p>{CONFIG.dateLabel}</p>
+              <span className="footer-line" />
+
+              <small>HECHO CON AMOR · INVITACIÓN DIGITAL</small>
+            </footer>
           </>
         )}
-        {/* CONSEJEROS  */}
 
-        <CounselorsContainer>
-          <p className="hero-kicker">
-            <span />
-            NUESTOS CONSEJEROS:
-            <span />
-          </p>
-          <Counselors
-            title="CONSEJEROS DE LA IGLESIA"
-            image={conIglesia}
-            names={["Javier Villca Moscoso", "Basilia Mamani Acuña"]}
-          />
-          <HeartDivider width="280px" size={22} />
-          <Counselors
-            title="CONSEJEROS CIVILES"
-            image={conCivil}
-            names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
-          />
-        </CounselorsContainer>
-
-        {/* PADRINOS */}
-        <section className="sponsors-section section">
-          <p className="hero-kicker">
-            <span />
-            NUESTROS PADRINOS
-            <span />
-          </p>
-
-          {CONFIG.sponsors.map((sponsor, index) => (
-            <div key={sponsor.id}>
-              <Sponsors
-                title={sponsor.title}
-                names={sponsor.names}
-                image={sponsor.image}
-                imagePosition={sponsor.imagePosition || "left"}
-              />
-
-              {index < CONFIG.sponsors.length - 1 && (
-                <HeartDivider width="220px" size={20} />
-              )}
-            </div>
-          ))}
-        </section>
-
-        <section className="intro section" id="invitacion">
-          <p className="eyebrow">UN DÍA PARA RECORDAR</p>
-
-          <h2>
-            ¡Nos encantaría
-            <br />
-            <em>compartirlo contigo!</em>
-          </h2>
-
-          <p className="body-copy">
-            Hay momentos que se vuelven inolvidables cuando los compartimos con
-            las personas que queremos. Nos hace mucha ilusión invitarte a
-            celebrar el comienzo de esta nueva etapa de nuestras vidas.
-          </p>
-
-          <div className="date-chip">
-            <CalendarDays size={19} />
-            <span>{CONFIG.dateLabel}</span>
-            <i />
-            <Clock3 size={18} />
-            <span>{CONFIG.timeLabel}</span>
-          </div>
-        </section>
-
-        {/* CUENTA REGRESIVA */}
-
-        <section className="countdown-section section">
-          <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
-
-          <h2>Falta muy poco</h2>
-
-          <Countdown />
-
-          <p className="small-note">
-            Cada segundo nos acerca a un día muy especial.
-          </p>
-        </section>
-
-        {/* GALERÍA */}
-
-        <section className="gallery-section section">
-          <div className="section-heading">
-            <p className="eyebrow">
-              <Camera size={15} />
-              NUESTROS MOMENTOS
-            </p>
-
-            <h2>
-              Recuerdos que cuentan
-              <br />
-              <em>nuestra historia</em>
-            </h2>
-          </div>
-          <Hero images={CONFIG.gallery} />
-        </section>
-
-        {/* UBICACIONES */}
-
-        <section className="events section">
-          <p className="eyebrow">NOS ENCONTRAMOS EN</p>
-
-          <h2>
-            Un día, <em>dos momentos</em>
-          </h2>
-          <LocationContainer>
-            <EventLocation
-              kind="CEREMONIA"
-              title={CONFIG.churchName}
-              address={CONFIG.churchAddress}
-              url={CONFIG.churchMapsUrl}
-              time="19:00 h"
-            />
-
-            <EventLocation
-              kind="CELEBRACIÓN"
-              title={CONFIG.venueName}
-              address={CONFIG.venueAddress}
-              url={CONFIG.venueMapsUrl}
-              time="21:00 h"
-            />
-          </LocationContainer>
-        </section>
-
-               {/* BUENOS DESEOS */}
-
-        <section className="wishes-section section">
-          <p className="eyebrow">PALABRAS DESDE EL CORAZÓN</p>
-
-          <h2>
-            Déjanos tus <em>buenos deseos</em>
-          </h2>
-
-          <p className="body-copy">
-            Nos encantará guardar tus palabras como parte de este recuerdo.
-          </p>
-
-          <form className="form wishes-form" onSubmit={submitWish}>
-            <label>
-              Tu nombre
-              <input
-                required
-                value={wishName}
-                onChange={(event) => setWishName(event.target.value)}
-                placeholder="¿Quién nos escribe?"
-                maxLength={80}
-              />
-            </label>
-
-            <label>
-              Tu mensaje
-              <textarea
-                required
-                value={wishMessage}
-                onChange={(event) => setWishMessage(event.target.value)}
-                placeholder="Escribe aquí tus buenos deseos..."
-                rows={4}
-                maxLength={500}
-              />
-            </label>
-
-            <div className="form-footer">
-              <span>{wishMessage.length}/500</span>
-
-              <button className="button button-dark" type="submit">
-                Enviar mensaje <Send size={15} />
-              </button>
-            </div>
-
-            {wishStatus && (
-              <p className="form-status" role="status">
-                {wishStatus}
-              </p>
-            )}
-          </form>
-
-          <div className="wishes-list">
-            {wishes.length === 0 ? (
-              <p className="empty-wishes">
-                Sé la primera persona en dejarnos un mensaje.
-              </p>
-            ) : (
-              wishes.map((wish) => (
-                <article
-                  className="wish"
-                  key={wish.id ?? `${wish.name}-${wish.message}`}
-                >
-                  <div className="wish-heart">
-                    <Heart size={17} />
-                  </div>
-
-                  <div>
-                    <h3>{wish.name}</h3>
-                    <p>{wish.message}</p>
-                  </div>
-                </article>
-              ))
-            )}
-          </div>
-
-          {!supabase && (
-            <p className="small-note">
-              Modo de demostración: los mensajes no se comparten entre
-              dispositivos hasta conectar la base de datos.
-            </p>
-          )}
-        </section>
-
-        {/* PIE DE PÁGINA */}
-
-        <footer className="footer">
-          <Heart size={20} />
-
-          <p className="script">Con amor,</p>
-          <h2>{CONFIG.couple}</h2>
-          <p>{CONFIG.dateLabel}</p>
-          <span className="footer-line" />
-
-          <small>HECHO CON AMOR · INVITACIÓN DIGITAL</small>
-        </footer>
         <audio
           ref={audioRef}
           id="wedding-audio"
