@@ -20,7 +20,7 @@ import {
   GestureContainer,
   FingerIcon,
   SwipeMessage,
-  WeddingRings,
+  //WeddingRings,
 } from "./styles";
 import { Countdown } from "../../components";
 
@@ -61,10 +61,10 @@ export default function WeddingPicture({
         <Overlay />
 
         <HeroContent>
-          <WeddingRings>
+          {/* <WeddingRings>
             <span className="ring ring-one" />
             <span className="ring ring-two" />
-          </WeddingRings>
+          </WeddingRings> */}
           <HeroKicker>
             <span />
             NOS CASAMOS

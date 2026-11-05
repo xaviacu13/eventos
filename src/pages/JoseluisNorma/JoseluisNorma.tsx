@@ -4,15 +4,12 @@ import type { FormEvent } from "react";
 import {
   CalendarDays,
   Clock3,
-  MapPin,
   Music2,
   Pause,
   Play,
   Heart,
   Camera,
-  ExternalLink,
   Send,
-  // Sparkles,
 } from "lucide-react";
 
 import {
@@ -21,14 +18,18 @@ import {
   HeartDivider,
   BibleVerse,
   Counselors,
+  Sponsors,
+  Hero,
+  EventLocation,
 } from "../../components";
 import weddingPicture from "../../assets/images/profiles/weddingpicture2.png";
 import conIglesia from "../../assets/images/consolers/conIglesia.png";
 import conCivil from "../../assets/images/consolers/conCivil.png";
+import { CONFIG } from "../../config/joseloNorma";
 
 import { supabase } from "../../lib/supabase";
 
-import { JoseloNormaStyles } from "./styles";
+import { JoseloNormaStyles, CounselorsContainer, LocationContainer  } from "./styles";
 
 type Wish = {
   id?: number;
@@ -45,40 +46,6 @@ type Countdown = {
 };
 
 const WEDDING_DATE = new Date("2026-12-19T19:00:00-03:00");
-
-const CONFIG = {
-  couple: "José Luis & Norma",
-  dateLabel: "Sábado 19 de diciembre de 2026",
-  timeLabel: "19:00 h",
-
-  churchName: "Iglesia Asamblea de Dios — Rayo de Sol",
-  churchAddress: "Calle Ceibo 1506, Glew, Buenos Aires, Argentina (CP 1856)",
-  churchMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Calle+Ceibo+1506%2C+Glew%2C+Buenos+Aires%2C+Argentina+1856",
-
-  venueName: "Local Nor Cinti",
-  venueAddress:
-    "Calle Manuel Gálvez 4050, Glew, Buenos Aires, Argentina (CP 1856)",
-  venueMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Local+Nor+Cinti%2C+Calle+Manuel+Galvez+4050%2C+Glew%2C+Buenos+Aires%2C+Argentina+1856",
-
-  songTitle: "Nuestra canción",
-};
-
-const gallery = [
-  {
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85",
-    alt: "Pareja celebrando una boda al aire libre",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1000&q=85",
-    alt: "Pareja de novios en un momento especial",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85",
-    alt: "Decoración romántica de boda",
-  },
-];
 
 function getCountdown(): Countdown {
   const distance = Math.max(0, WEDDING_DATE.getTime() - Date.now());
@@ -123,57 +90,11 @@ function Countdown() {
   );
 }
 
-interface EventLocationProps {
-  kind: string;
-  title: string;
-  address: string;
-  url: string;
-  time: string;
-}
-
-function EventLocation({
-  kind,
-  title,
-  address,
-  url,
-  time,
-}: EventLocationProps) {
-  return (
-    <article className="location-card">
-      <div className="location-icon">
-        <MapPin size={22} strokeWidth={1.5} />
-      </div>
-
-      <p className="eyebrow">{kind}</p>
-
-      <h3>{title}</h3>
-
-      <p className="muted">{address}</p>
-
-      <p className="event-time">
-        <Clock3 size={16} />
-        {time}
-      </p>
-
-      <a className="text-link" href={url} target="_blank" rel="noreferrer">
-        Cómo llegar <ExternalLink size={15} />
-      </a>
-    </article>
-  );
-}
-
 const JoseluisNorma = () => {
   const [wishName, setWishName] = useState("");
   const [wishMessage, setWishMessage] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [wishStatus, setWishStatus] = useState("");
-
-  // const [rsvpName, setRsvpName] = useState("");
-  // const [rsvpGuests, setRsvpGuests] = useState("1");
-  // const [rsvpAnswer, setRsvpAnswer] = useState("Sí, allí estaré");
-  // const [rsvpStatus, setRsvpStatus] = useState("");
-
-  // const [showRsvp, setShowRsvp] = useState(false);
   const [musicOn, setMusicOn] = useState(false);
   const [musicError, setMusicError] = useState("");
   const [isOpenCard, setIsOpenCard] = useState(false);
@@ -283,23 +204,6 @@ const JoseluisNorma = () => {
     );
   }
 
-//   async function submitRsvp(event: FormEvent<HTMLFormElement>) {
-//     event.preventDefault();
-
-//     const message = `Confirmación de asistencia a la boda
-// Nombre: ${rsvpName.trim()}
-// Respuesta: ${rsvpAnswer}
-// Cantidad de personas: ${rsvpGuests}`;
-
-//     const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
-
-//     window.open(url, "_blank", "noopener,noreferrer");
-
-//     setRsvpStatus(
-//       "Se abrió WhatsApp para que puedas enviar la confirmación. Configura el número de contacto de los novios antes de publicar.",
-//     );
-//   }
-
   return (
     <>
       <JoseloNormaStyles />
@@ -329,23 +233,15 @@ const JoseluisNorma = () => {
                 role="img"
                 aria-label="Decoración romántica de boda"
               />
-
               <div className="hero-overlay" />
-
               <div className="hero-content">
-                {/* <p className="hero-kicker">
-              <span />
-              NOS CASAMOS
-              <span />
-            </p> */}
-
                 <p className="script">
                   Con la bendicion de Dios y el amor que nos une, hemos decidido
                   caminar juntos para toda la vida!
                 </p>
                 <br />
                 <HeartDivider width="280px" size={22} />
-
+                <br />
                 <p className="hero-kicker">
                   <span />
                   PADRES DEL NOVIO:
@@ -374,304 +270,240 @@ const JoseluisNorma = () => {
 
               <div className="hero-bottom">CON TODO NUESTRO AMOR</div>
             </section>
-            {/* CONSEJEROS  */}
-
-            <section className="counselors-section section">
-              <p className="hero-kicker">
-                <span />
-                NUESTOS CONSEJEROS:
-                <span />
-              </p>
-              <Counselors
-                title="Consejeros de la iglesia"
-                image={conIglesia}
-                names={["Javier Villca Moscoso", "Basilia Mamani Acuña"]}
-              />
-              <HeartDivider width="280px" size={22} />
-              <Counselors
-                title="Consejeros civiles"
-                image={conCivil}
-                names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
-              />
-            </section>
-
-            {/* PADRINOS */}
-
-            <section className="intro section" id="invitacion">
-              <p className="eyebrow">UN DÍA PARA RECORDAR</p>
-
-              <h2>
-                ¡Nos encantaría
-                <br />
-                <em>compartirlo contigo!</em>
-              </h2>
-
-              <p className="body-copy">
-                Hay momentos que se vuelven inolvidables cuando los compartimos
-                con las personas que queremos. Nos hace mucha ilusión invitarte
-                a celebrar el comienzo de esta nueva etapa de nuestras vidas.
-              </p>
-
-              <div className="date-chip">
-                <CalendarDays size={19} />
-                <span>{CONFIG.dateLabel}</span>
-                <i />
-                <Clock3 size={18} />
-                <span>{CONFIG.timeLabel}</span>
-              </div>
-            </section>
-
-            {/* CUENTA REGRESIVA */}
-
-            <section className="countdown-section section">
-              <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
-
-              <h2>Falta muy poco</h2>
-
-              <Countdown />
-
-              <p className="small-note">
-                Cada segundo nos acerca a un día muy especial.
-              </p>
-            </section>
-
-            {/* GALERÍA */}
-
-            <section className="gallery-section section">
-              <div className="section-heading">
-                <p className="eyebrow">
-                  <Camera size={15} />
-                  NUESTROS MOMENTOS
-                </p>
-
-                <h2>
-                  Recuerdos que cuentan
-                  <br />
-                  <em>nuestra historia</em>
-                </h2>
-              </div>
-
-              <div className="gallery">
-                {gallery.map((photo, index) => (
-                  <figure
-                    className={`gallery-photo photo-${index + 1}`}
-                    key={photo.src}
-                  >
-                    <img src={photo.src} alt={photo.alt} loading="lazy" />
-                  </figure>
-                ))}
-              </div>
-
-              <p className="small-note">Estas son imágenes de muestra.</p>
-            </section>
-
-            {/* UBICACIONES */}
-
-            <section className="events section">
-              <p className="eyebrow">NOS ENCONTRAMOS EN</p>
-
-              <h2>
-                Un día, <em>dos momentos</em>
-              </h2>
-
-              <div className="locations">
-                <EventLocation
-                  kind="CEREMONIA"
-                  title={CONFIG.churchName}
-                  address={CONFIG.churchAddress}
-                  url={CONFIG.churchMapsUrl}
-                  time="19:00 h"
-                />
-
-                <EventLocation
-                  kind="CELEBRACIÓN"
-                  title={CONFIG.venueName}
-                  address={CONFIG.venueAddress}
-                  url={CONFIG.venueMapsUrl}
-                  time="21:00 h"
-                />
-              </div>
-            </section>
-
-            {/* CONFIRMACIÓN RSVP */}
-
-            {/* <section className="rsvp-section section">
-          <div className="rsvp-card">
-            <Sparkles size={23} strokeWidth={1.4} />
-
-            <p className="eyebrow">QUEREMOS CONTAR CONTIGO</p>
-
-            <h2>¿Nos acompañas?</h2>
-
-            <p className="body-copy">
-              Tu presencia hará que este día sea aún más especial. Confírmanos
-              si podrás acompañarnos.
-            </p>
-
-            <button
-              className="button button-dark"
-              onClick={() => setShowRsvp((value) => !value)}
-            >
-              {showRsvp ? "Cerrar formulario" : "Confirmar asistencia"}
-            </button>
-
-            {showRsvp && (
-              <form className="form rsvp-form" onSubmit={submitRsvp}>
-                <label>
-                  Tu nombre
-                  <input
-                    required
-                    value={rsvpName}
-                    onChange={(event) => setRsvpName(event.target.value)}
-                    placeholder="Nombre y apellido"
-                    maxLength={80}
-                  />
-                </label>
-
-                <label>
-                  ¿Podrás asistir?
-                  <select
-                    value={rsvpAnswer}
-                    onChange={(event) => setRsvpAnswer(event.target.value)}
-                  >
-                    <option>Sí, allí estaré</option>
-                    <option>Lo siento, no podré asistir</option>
-                  </select>
-                </label>
-
-                <label>
-                  Personas incluyéndote
-                  <select
-                    value={rsvpGuests}
-                    onChange={(event) => setRsvpGuests(event.target.value)}
-                  >
-                    {["1", "2", "3", "4", "5", "6"].map((number) => (
-                      <option key={number} value={number}>
-                        {number}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <button className="button button-dark" type="submit">
-                  Continuar por WhatsApp <Send size={16} />
-                </button>
-
-                {rsvpStatus && <p className="form-status">{rsvpStatus}</p>}
-              </form>
-            )}
-          </div>
-        </section> */}
-
-            {/* BUENOS DESEOS */}
-
-            <section className="wishes-section section">
-              <p className="eyebrow">PALABRAS DESDE EL CORAZÓN</p>
-
-              <h2>
-                Déjanos tus <em>buenos deseos</em>
-              </h2>
-
-              <p className="body-copy">
-                Nos encantará guardar tus palabras como parte de este recuerdo.
-              </p>
-
-              <form className="form wishes-form" onSubmit={submitWish}>
-                <label>
-                  Tu nombre
-                  <input
-                    required
-                    value={wishName}
-                    onChange={(event) => setWishName(event.target.value)}
-                    placeholder="¿Quién nos escribe?"
-                    maxLength={80}
-                  />
-                </label>
-
-                <label>
-                  Tu mensaje
-                  <textarea
-                    required
-                    value={wishMessage}
-                    onChange={(event) => setWishMessage(event.target.value)}
-                    placeholder="Escribe aquí tus buenos deseos..."
-                    rows={4}
-                    maxLength={500}
-                  />
-                </label>
-
-                <div className="form-footer">
-                  <span>{wishMessage.length}/500</span>
-
-                  <button className="button button-dark" type="submit">
-                    Enviar mensaje <Send size={15} />
-                  </button>
-                </div>
-
-                {wishStatus && (
-                  <p className="form-status" role="status">
-                    {wishStatus}
-                  </p>
-                )}
-              </form>
-
-              <div className="wishes-list">
-                {wishes.length === 0 ? (
-                  <p className="empty-wishes">
-                    Sé la primera persona en dejarnos un mensaje.
-                  </p>
-                ) : (
-                  wishes.map((wish) => (
-                    <article
-                      className="wish"
-                      key={wish.id ?? `${wish.name}-${wish.message}`}
-                    >
-                      <div className="wish-heart">
-                        <Heart size={17} />
-                      </div>
-
-                      <div>
-                        <h3>{wish.name}</h3>
-                        <p>{wish.message}</p>
-                      </div>
-                    </article>
-                  ))
-                )}
-              </div>
-
-              {!supabase && (
-                <p className="small-note">
-                  Modo de demostración: los mensajes no se comparten entre
-                  dispositivos hasta conectar la base de datos.
-                </p>
-              )}
-            </section>
-
-            {/* PIE DE PÁGINA */}
-
-            <footer className="footer">
-              <Heart size={20} />
-
-              <p className="script">Con amor,</p>
-
-              <h2>{CONFIG.couple}</h2>
-
-              <p>{CONFIG.dateLabel}</p>
-
-              <span className="footer-line" />
-
-              <small>HECHO CON AMOR · INVITACIÓN DIGITAL</small>
-            </footer>
-            <audio
-              ref={audioRef}
-              id="wedding-audio"
-              src="/music/wedding-song.mp3"
-              loop
-              preload="none"
-              onEnded={() => setMusicOn(false)}
-            />
           </>
         )}
+        {/* CONSEJEROS  */}
+
+        <CounselorsContainer>
+          <p className="hero-kicker">
+            <span />
+            NUESTOS CONSEJEROS:
+            <span />
+          </p>
+          <Counselors
+            title="CONSEJEROS DE LA IGLESIA"
+            image={conIglesia}
+            names={["Javier Villca Moscoso", "Basilia Mamani Acuña"]}
+          />
+          <HeartDivider width="280px" size={22} />
+          <Counselors
+            title="CONSEJEROS CIVILES"
+            image={conCivil}
+            names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
+          />
+        </CounselorsContainer>
+
+        {/* PADRINOS */}
+        <section className="sponsors-section section">
+          <p className="hero-kicker">
+            <span />
+            NUESTROS PADRINOS
+            <span />
+          </p>
+
+          {CONFIG.sponsors.map((sponsor, index) => (
+            <div key={sponsor.id}>
+              <Sponsors
+                title={sponsor.title}
+                names={sponsor.names}
+                image={sponsor.image}
+                imagePosition={sponsor.imagePosition || "left"}
+              />
+
+              {index < CONFIG.sponsors.length - 1 && (
+                <HeartDivider width="220px" size={20} />
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section className="intro section" id="invitacion">
+          <p className="eyebrow">UN DÍA PARA RECORDAR</p>
+
+          <h2>
+            ¡Nos encantaría
+            <br />
+            <em>compartirlo contigo!</em>
+          </h2>
+
+          <p className="body-copy">
+            Hay momentos que se vuelven inolvidables cuando los compartimos con
+            las personas que queremos. Nos hace mucha ilusión invitarte a
+            celebrar el comienzo de esta nueva etapa de nuestras vidas.
+          </p>
+
+          <div className="date-chip">
+            <CalendarDays size={19} />
+            <span>{CONFIG.dateLabel}</span>
+            <i />
+            <Clock3 size={18} />
+            <span>{CONFIG.timeLabel}</span>
+          </div>
+        </section>
+
+        {/* CUENTA REGRESIVA */}
+
+        <section className="countdown-section section">
+          <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
+
+          <h2>Falta muy poco</h2>
+
+          <Countdown />
+
+          <p className="small-note">
+            Cada segundo nos acerca a un día muy especial.
+          </p>
+        </section>
+
+        {/* GALERÍA */}
+
+        <section className="gallery-section section">
+          <div className="section-heading">
+            <p className="eyebrow">
+              <Camera size={15} />
+              NUESTROS MOMENTOS
+            </p>
+
+            <h2>
+              Recuerdos que cuentan
+              <br />
+              <em>nuestra historia</em>
+            </h2>
+          </div>
+          <Hero images={CONFIG.gallery} />
+        </section>
+
+        {/* UBICACIONES */}
+
+        <section className="events section">
+          <p className="eyebrow">NOS ENCONTRAMOS EN</p>
+
+          <h2>
+            Un día, <em>dos momentos</em>
+          </h2>
+          <LocationContainer>
+            <EventLocation
+              kind="CEREMONIA"
+              title={CONFIG.churchName}
+              address={CONFIG.churchAddress}
+              url={CONFIG.churchMapsUrl}
+              time="19:00 h"
+            />
+
+            <EventLocation
+              kind="CELEBRACIÓN"
+              title={CONFIG.venueName}
+              address={CONFIG.venueAddress}
+              url={CONFIG.venueMapsUrl}
+              time="21:00 h"
+            />
+          </LocationContainer>
+        </section>
+
+               {/* BUENOS DESEOS */}
+
+        <section className="wishes-section section">
+          <p className="eyebrow">PALABRAS DESDE EL CORAZÓN</p>
+
+          <h2>
+            Déjanos tus <em>buenos deseos</em>
+          </h2>
+
+          <p className="body-copy">
+            Nos encantará guardar tus palabras como parte de este recuerdo.
+          </p>
+
+          <form className="form wishes-form" onSubmit={submitWish}>
+            <label>
+              Tu nombre
+              <input
+                required
+                value={wishName}
+                onChange={(event) => setWishName(event.target.value)}
+                placeholder="¿Quién nos escribe?"
+                maxLength={80}
+              />
+            </label>
+
+            <label>
+              Tu mensaje
+              <textarea
+                required
+                value={wishMessage}
+                onChange={(event) => setWishMessage(event.target.value)}
+                placeholder="Escribe aquí tus buenos deseos..."
+                rows={4}
+                maxLength={500}
+              />
+            </label>
+
+            <div className="form-footer">
+              <span>{wishMessage.length}/500</span>
+
+              <button className="button button-dark" type="submit">
+                Enviar mensaje <Send size={15} />
+              </button>
+            </div>
+
+            {wishStatus && (
+              <p className="form-status" role="status">
+                {wishStatus}
+              </p>
+            )}
+          </form>
+
+          <div className="wishes-list">
+            {wishes.length === 0 ? (
+              <p className="empty-wishes">
+                Sé la primera persona en dejarnos un mensaje.
+              </p>
+            ) : (
+              wishes.map((wish) => (
+                <article
+                  className="wish"
+                  key={wish.id ?? `${wish.name}-${wish.message}`}
+                >
+                  <div className="wish-heart">
+                    <Heart size={17} />
+                  </div>
+
+                  <div>
+                    <h3>{wish.name}</h3>
+                    <p>{wish.message}</p>
+                  </div>
+                </article>
+              ))
+            )}
+          </div>
+
+          {!supabase && (
+            <p className="small-note">
+              Modo de demostración: los mensajes no se comparten entre
+              dispositivos hasta conectar la base de datos.
+            </p>
+          )}
+        </section>
+
+        {/* PIE DE PÁGINA */}
+
+        <footer className="footer">
+          <Heart size={20} />
+
+          <p className="script">Con amor,</p>
+          <h2>{CONFIG.couple}</h2>
+          <p>{CONFIG.dateLabel}</p>
+          <span className="footer-line" />
+
+          <small>HECHO CON AMOR · INVITACIÓN DIGITAL</small>
+        </footer>
+        <audio
+          ref={audioRef}
+          id="wedding-audio"
+          src="/music/wedding-song.mp3"
+          loop
+          preload="none"
+          onEnded={() => setMusicOn(false)}
+        />
 
         {isOpenCard && (
           <button

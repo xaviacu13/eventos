@@ -89,7 +89,7 @@ export const ScriptText = styled(Typography)({
 
 export const CoupleName = styled(Typography)({
   fontFamily: "'Alex Brush', cursive",
-  fontSize: "3.7rem",
+  fontSize: "3rem",
   fontWeight: 400,
   lineHeight: 1.1,
 
@@ -125,7 +125,7 @@ export const HeroDivider = styled(Box)({
 
 export const HeroDate = styled(Typography)({
   fontFamily: "Georgia, serif",
-  fontSize: "1.2rem",
+  fontSize: "1rem",
   letterSpacing: "2px",
   color: "#efc805",
   marginBottom: "12px",
@@ -133,7 +133,7 @@ export const HeroDate = styled(Typography)({
 
 export const InvitationRecipient = styled(Typography)({
   fontFamily: "'Alex Brush', cursive",
-  fontSize: "2rem",
+  fontSize: "1.7rem",
   lineHeight: 1.1,
   color: "#f5d9d0",
 });

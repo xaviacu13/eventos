@@ -3,7 +3,7 @@ import { Box, styled } from "@mui/material";
 export const CounselorsContainer = styled(Box)({
   width: "100%",
   maxWidth: "420px",
-  margin: "25px auto",
+  margin: "13px auto",
   padding: "10px",
   textAlign: "center",
 

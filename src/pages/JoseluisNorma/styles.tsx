@@ -1,5 +1,6 @@
 // styles.ts
 import { Global, css } from "@emotion/react";
+import { styled } from "@mui/material/styles";
 
 export function JoseloNormaStyles() {
   return (
@@ -760,3 +761,23 @@ export function JoseloNormaStyles() {
     />
   );
 }
+
+export const CounselorsContainer = styled("div")({
+  width: "100%",
+  maxWidth: "420px",
+  margin: "25px auto",
+  padding: "10px",
+  textAlign: "center",
+
+})
+ export const  LocationContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  maxWidth: "420px",
+  margin: "25px auto",
+  padding: "10px",
+  gap: "2rem",
+  textAlign: "center",
+
+})

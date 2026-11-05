@@ -4,3 +4,6 @@ export { default as Countdown } from "./Countdown";
 export { default as HeartDivider } from "./HeartDivider";
 export { default as BibleVerse } from "./BibleVerse";
 export { default as Counselors } from "./Counselors";
+export { default as Sponsors } from "./Sponsors";
+export { default as Hero } from "./Hero";
+export { default as EventLocation } from "./EventLocation";
