@@ -1,6 +1,7 @@
 // styles.ts
 import { Global, css } from "@emotion/react";
 import { styled } from "@mui/material/styles";
+import  wenddingPicture3  from "../../assets/images/profiles/wenddingpicture3.png"
 
 export function JoseloNormaStyles() {
   return (
@@ -9,8 +10,8 @@ export function JoseloNormaStyles() {
         @import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 
         .joselo-norma-page {
-          --cream: #f8f4ed;
-          --paper: #fffdf9;
+          --cream: #f2d6f0;
+          --paper: #f7d4ef;
           --ink: #3f4038;
           --muted: #77786e;
           --burgundy: #74394a;
@@ -384,7 +385,7 @@ export function JoseloNormaStyles() {
         }
 
         .joselo-norma-page .hero-image {
-          background-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=90");
+          background-image: url(${wenddingPicture3});
           background-size: cover;
           background-position: center 45%;
         }
@@ -541,7 +542,7 @@ export function JoseloNormaStyles() {
 
         .joselo-norma-page .countdown-section,
         .joselo-norma-page .events {
-          background: #f0e7e5;
+          background: #f4cbf1;
         }
 
         .joselo-norma-page .countdown {

@@ -16,6 +16,7 @@ import g2 from "../assets/images/gallery/g2.png";
 import g3 from "../assets/images/gallery/g3.png";
 import g4 from "../assets/images/gallery/g4.png";
 import g5 from "../assets/images/gallery/g5.png";
+import g6 from "../assets/images/gallery/g6.png";
 
 type Sponsor = {
   id: number;
@@ -43,7 +44,7 @@ export const CONFIG: {
   sponsors: Sponsor[];
   gallery: GalleryImage[];
 } = {
-  couple: "José Luis & Norma",
+  couple: "José Luis y Norma",
   dateLabel: "Sábado 19 de diciembre de 2026",
   timeLabel: "19:00 h",
 
@@ -153,5 +154,6 @@ export const CONFIG: {
     { src: g3, alt: "Imagen 3" },
     { src: g4, alt: "Imagen 4" },
     { src: g5, alt: "Imagen 5" },
+    { src: g6, alt: "Imagen 6" },
   ],
 };

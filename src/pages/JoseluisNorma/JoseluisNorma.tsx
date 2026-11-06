@@ -139,7 +139,7 @@ const JoseluisNorma = () => {
 
     try {
       if (audio.currentTime === 0) {
-        audio.currentTime = 12;
+        audio.currentTime = 16;
       }
 
       await audio.play();
@@ -373,24 +373,6 @@ const JoseluisNorma = () => {
               </p>
             </section>
 
-            {/* GALERÍA */}
-
-            <section className="gallery-section section">
-              <div className="section-heading">
-                <p className="eyebrow">
-                  <Camera size={15} />
-                  NUESTROS MOMENTOS
-                </p>
-
-                <h2>
-                  Recuerdos que cuentan
-                  <br />
-                  <em>nuestra historia</em>
-                </h2>
-              </div>
-              <Hero images={CONFIG.gallery} />
-            </section>
-
             {/* UBICACIONES */}
 
             <section className="events section">
@@ -416,6 +398,24 @@ const JoseluisNorma = () => {
                   time="21:00 h"
                 />
               </LocationContainer>
+            </section>
+
+            {/* GALERÍA */}
+
+            <section className="gallery-section section">
+              <div className="section-heading">
+                <p className="eyebrow">
+                  <Camera size={15} />
+                  NUESTROS MOMENTOS
+                </p>
+
+                <h2>
+                  Recuerdos que cuentan
+                  <br />
+                  <em>nuestra historia</em>
+                </h2>
+              </div>
+              <Hero images={CONFIG.gallery} />
             </section>
 
             {/* BUENOS DESEOS */}
