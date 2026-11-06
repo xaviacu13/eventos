@@ -73,7 +73,7 @@ export const CONFIG: {
     {
       id: 2,
       title: "Padrinos de local",
-      names: ["Delfin Quispe", "Esilda Otondo"],
+      names: ["Delfin Quispe", "Isilda Otondo"],
       image: local,
       imagePosition: "left",
     },

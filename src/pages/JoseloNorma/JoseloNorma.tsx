@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { FormEvent } from "react";
+// import type { FormEvent } from "react";
 
 import {
   CalendarDays,
@@ -9,7 +9,7 @@ import {
   Play,
   Heart,
   Camera,
-  Send,
+  // Send,
 } from "lucide-react";
 
 import {
@@ -27,7 +27,7 @@ import conIglesia from "../../assets/images/consolers/conIglesia.png";
 import conCivil from "../../assets/images/consolers/conCivil.png";
 import { CONFIG } from "../../config/joseloNorma";
 
-import { supabase } from "../../lib/supabase";
+// import { supabase } from "../../lib/supabase";
 
 import {
   JoseloNormaStyles,
@@ -35,12 +35,12 @@ import {
   LocationContainer,
 } from "./styles";
 
-type Wish = {
-  id?: number;
-  name: string;
-  message: string;
-  created_at?: string;
-};
+// type Wish = {
+//   id?: number;
+//   name: string;
+//   message: string;
+//   created_at?: string;
+// };
 
 type Countdown = {
   days: number;
@@ -94,11 +94,11 @@ function Countdown() {
   );
 }
 
-const JoseluisNorma = () => {
-  const [wishName, setWishName] = useState("");
-  const [wishMessage, setWishMessage] = useState("");
-  const [wishes, setWishes] = useState<Wish[]>([]);
-  const [wishStatus, setWishStatus] = useState("");
+const JoseloNorma = () => {
+  // const [wishName, setWishName] = useState("");
+  // const [wishMessage, setWishMessage] = useState("");
+  // const [wishes, setWishes] = useState<Wish[]>([]);
+  // const [wishStatus, setWishStatus] = useState("");
   const [musicOn, setMusicOn] = useState(false);
   const [musicError, setMusicError] = useState("");
   const [isOpenCard, setIsOpenCard] = useState(false);
@@ -153,60 +153,60 @@ const JoseluisNorma = () => {
     }
   }
 
-  async function submitWish(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setWishStatus("");
+  // async function submitWish(event: FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+  //   setWishStatus("");
 
-    const wish = {
-      name: wishName.trim(),
-      message: wishMessage.trim(),
-    };
+  //   const wish = {
+  //     name: wishName.trim(),
+  //     message: wishMessage.trim(),
+  //   };
 
-    if (!wish.name || !wish.message) return;
+  //   if (!wish.name || !wish.message) return;
 
-    if (supabase) {
-      const { data, error } = await supabase
-        .from("wishes")
-        .insert(wish)
-        .select("id,name,message,created_at")
-        .single();
+  //   if (supabase) {
+  //     const { data, error } = await supabase
+  //       .from("wishes")
+  //       .insert(wish)
+  //       .select("id,name,message,created_at")
+  //       .single();
 
-      if (error) {
-        setWishStatus(
-          "No se pudo publicar. Inténtalo de nuevo en unos minutos.",
-        );
-        return;
-      }
+  //     if (error) {
+  //       setWishStatus(
+  //         "No se pudo publicar. Inténtalo de nuevo en unos minutos.",
+  //       );
+  //       return;
+  //     }
 
-      setWishes((current) => [data as Wish, ...current]);
-    } else {
-      const next = [
-        {
-          ...wish,
-          id: Date.now(),
-          created_at: new Date().toISOString(),
-        },
-        ...wishes,
-      ].slice(0, 50);
+  //     setWishes((current) => [data as Wish, ...current]);
+  //   } else {
+  //     const next = [
+  //       {
+  //         ...wish,
+  //         id: Date.now(),
+  //         created_at: new Date().toISOString(),
+  //       },
+  //       ...wishes,
+  //     ].slice(0, 50);
 
-      setWishes(next);
+  //     setWishes(next);
 
-      try {
-        localStorage.setItem("wedding-demo-wishes", JSON.stringify(next));
-      } catch {
-        // Modo de demostración.
-      }
-    }
+  //     try {
+  //       localStorage.setItem("wedding-demo-wishes", JSON.stringify(next));
+  //     } catch {
+  //       // Modo de demostración.
+  //     }
+  //   }
 
-    setWishName("");
-    setWishMessage("");
+  //   setWishName("");
+  //   setWishMessage("");
 
-    setWishStatus(
-      supabase
-        ? "¡Tu mensaje se publicó! Gracias por tus buenos deseos."
-        : "Mensaje guardado en esta demo en este navegador. Conecta Supabase para compartirlo con todos.",
-    );
-  }
+  //   setWishStatus(
+  //     supabase
+  //       ? "¡Tu mensaje se publicó! Gracias por tus buenos deseos."
+  //       : "Mensaje guardado en esta demo en este navegador. Conecta Supabase para compartirlo con todos.",
+  //   );
+  // }
 
   return (
     <>
@@ -420,7 +420,7 @@ const JoseluisNorma = () => {
 
             {/* BUENOS DESEOS */}
 
-            <section className="wishes-section section">
+            {/* <section className="wishes-section section">
               <p className="eyebrow">PALABRAS DESDE EL CORAZÓN</p>
 
               <h2>
@@ -500,7 +500,7 @@ const JoseluisNorma = () => {
                   dispositivos hasta conectar la base de datos.
                 </p>
               )}
-            </section>
+            </section> */}
             {/* PIE DE PÁGINA */}
 
             <footer className="footer">
@@ -546,4 +546,4 @@ const JoseluisNorma = () => {
     </>
   );
 };
-export default JoseluisNorma;
+export default JoseloNorma;

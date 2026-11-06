@@ -10,7 +10,7 @@ export function JoseloNormaStyles() {
         @import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 
         .joselo-norma-page {
-          --cream: #f2d6f0;
+          --cream: #fae7f9;
           --paper: #f7d4ef;
           --ink: #3f4038;
           --muted: #77786e;
