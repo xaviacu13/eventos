@@ -46,10 +46,10 @@ export const CONFIG: {
 } = {
   couple: "José Luis y Norma",
   dateLabel: "Sábado 19 de diciembre de 2026",
-  timeLabel: "19:00 h",
+  timeLabel: "17:00 h",
 
   // Dirección de la iglesia
-  churchName: "Iglesia Asamblea de Dios — Rayo de Sol",
+  churchName: "Iglesia Asamblea de Dios Rayo de Sol",
   churchAddress: "Calle Ceibo 1506, Glew, Buenos Aires, Argentina (CP 1856)",
   churchMapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Calle+Ceibo+1506%2C+Glew%2C+Buenos+Aires%2C+Argentina+1856",
@@ -129,7 +129,7 @@ export const CONFIG: {
     {
       id: 10,
       title: "Padrinos de centro de mesa",
-      names: ["Tito Vera", "Rosilda Otondo"],
+      names: ["Tito Vera", "Rosenda Otondo"],
       image: centro_mesa,
       imagePosition: "left",
     },

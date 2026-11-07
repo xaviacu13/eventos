@@ -6,19 +6,14 @@ export const LocationCard = styled("article")(({ theme }) => ({
   boxSizing: "border-box",
   padding: "32px 24px",
   textAlign: "center",
-
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-
-  backgroundColor: "#FAF4E2",
+  backgroundColor: "#fae2f6",
   border: "1px solid rgba(150, 110, 70, 0.3)",
   borderRadius: "18px",
-
   boxShadow: "0 5px 18px rgba(2, 2, 1, 0.06)",
-
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-
   "&:hover": {
     transform: "translateY(-4px)",
     boxShadow: "0 9px 24px rgba(2, 2, 1, 0.10)",
@@ -95,23 +90,17 @@ export const LocationLink = styled("a")({
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
-
   marginTop: "22px",
   padding: "11px 22px",
-
   color: "#FAF4E2",
-  backgroundColor: "#044003",
-
+  backgroundColor: "#45041d",
   borderRadius: "30px",
   textDecoration: "none",
-
-  fontSize: "0.85rem",
+  fontSize: "1.2rem",
   fontWeight: 500,
-
   transition: "all 0.25s ease",
-
   "&:hover": {
-    backgroundColor: "#0A5A08",
+    backgroundColor: "#72042e",
     transform: "translateY(-2px)",
   },
 });

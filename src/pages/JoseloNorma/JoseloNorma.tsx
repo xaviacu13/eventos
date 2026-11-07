@@ -309,6 +309,7 @@ const JoseloNorma = () => {
                 image={conCivil}
                 names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
               />
+               <HeartDivider width="280px" size={22} />
             </CounselorsContainer>
 
             {/* PADRINOS */}

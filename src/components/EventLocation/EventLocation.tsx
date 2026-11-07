@@ -1,4 +1,4 @@
-import { MapPin, Clock3, ExternalLink } from "lucide-react";
+import { MapPin, Clock3, Map } from "lucide-react";
 
 import {
   LocationCard,
@@ -30,13 +30,9 @@ const EventLocation = ({
       <LocationIcon>
         <MapPin size={23} strokeWidth={1.5} />
       </LocationIcon>
-
       <LocationKind>{kind}</LocationKind>
-
       <LocationTitle>{title}</LocationTitle>
-
       <LocationAddress>{address}</LocationAddress>
-
       <LocationTime>
         <Clock3 size={16} />
         <span>{time}</span>
@@ -47,8 +43,8 @@ const EventLocation = ({
         target="_blank"
         rel="noopener noreferrer"
       >
+        <Map size={15} />
         Cómo llegar
-        <ExternalLink size={15} />
       </LocationLink>
     </LocationCard>
   );
