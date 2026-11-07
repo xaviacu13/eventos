@@ -44,7 +44,7 @@ export const LocationKind = styled("p")({
   margin: "0 0 10px",
   color: "#800020",
 
-  fontSize: "0.72rem",
+  fontSize: "0.86rem",
   fontWeight: 600,
   letterSpacing: "0.2em",
   textTransform: "uppercase",

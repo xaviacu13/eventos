@@ -18,9 +18,10 @@ export const GeneratorCard = styled("section")({
   boxSizing: "border-box",
   padding: "36px",
   background: "#f5d4d4",
+  border: "1.2px solid #cf919a",
   borderRadius: "24px",
-  boxShadow:
-    "0 15px 45px rgba(44, 2, 12, 0.15)",
+  boxShadow: "0 15px 45px rgba(44, 2, 12, 0.15)",
+
   "@media (max-width: 600px)": {
     padding: "26px 20px",
     borderRadius: "20px",
@@ -202,4 +203,33 @@ export const CopiedMessage = styled("p")({
   color: "#397044",
   fontFamily: "Georgia, serif",
   fontSize: "13px",
+});
+
+export const NewInvitationButton = styled("button")({
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "9px",
+  marginTop: "10px",
+  padding: "15px 18px",
+  border: "1px solid #74394a",
+  borderRadius: "12px",
+  color: "#74394a",
+  background: "#fff",
+  fontFamily: "inherit",
+  fontSize: "14px",
+  fontWeight: 600,
+
+  cursor: "pointer",
+  transition: "all 0.25s ease",
+
+  "&:hover": {
+    background: "#74394a",
+    color: "#fffaf7",
+  },
+
+  "&:active": {
+    transform: "scale(0.98)",
+  },
 });

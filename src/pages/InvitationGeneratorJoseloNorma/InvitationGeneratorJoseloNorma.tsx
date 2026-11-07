@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Copy, ExternalLink, Send, Check } from "lucide-react";
+import { Copy, ExternalLink, Send, Check, Plus } from "lucide-react";
 
 import {
   GeneratorPage,
@@ -16,6 +16,7 @@ import {
   ShareButton,
   OpenButton,
   CopiedMessage,
+  NewInvitationButton,
 } from "./styles";
 import envelope from "../../assets/images/invite/envelope.png";
 import { HeartDivider } from "../../components";
@@ -119,6 +120,12 @@ const InvitationGeneratorJoseloNorma = () => {
     }
   };
 
+  const resetInvitation = () => {
+    setGuestName("");
+    setGeneratedUrl("");
+    setCopied(false);
+  };
+
   return (
     <GeneratorPage>
       <GeneratorCard>
@@ -189,6 +196,10 @@ const InvitationGeneratorJoseloNorma = () => {
                 <ExternalLink size={18} />
                 Abrir invitación
               </OpenButton>
+              <NewInvitationButton onClick={resetInvitation}>
+                <Plus size={18} />
+                Generar nueva invitación
+              </NewInvitationButton>
             </ActionButtons>
 
             {copied && (

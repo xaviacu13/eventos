@@ -1,14 +1,15 @@
-import { MapPin, Clock3, Map } from "lucide-react";
+import { Clock3, Map } from "lucide-react";
 
 import {
   LocationCard,
-  LocationIcon,
+  // LocationIcon,
   LocationKind,
   LocationTitle,
   LocationAddress,
   LocationTime,
   LocationLink,
 } from "./styles";
+import HeartDivider from "../HeartDivider";
 
 export interface EventLocationProps {
   kind: string;
@@ -27,10 +28,11 @@ const EventLocation = ({
 }: EventLocationProps) => {
   return (
     <LocationCard>
-      <LocationIcon>
+      {/* <LocationIcon>
         <MapPin size={23} strokeWidth={1.5} />
-      </LocationIcon>
+      </LocationIcon> */}
       <LocationKind>{kind}</LocationKind>
+      <HeartDivider />
       <LocationTitle>{title}</LocationTitle>
       <LocationAddress>{address}</LocationAddress>
       <LocationTime>
