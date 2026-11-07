@@ -75,7 +75,7 @@ const InvitationGeneratorJoseloNorma = () => {
 
       const shareData = {
         title: "Invitación de José Luis & Norma",
-        text: `${guestName}\n\n${generatedUrl}`,
+        text: guestName,
         url: generatedUrl,
         files: [file],
       };
@@ -109,7 +109,7 @@ const InvitationGeneratorJoseloNorma = () => {
 
         setTimeout(() => {
           setCopied(false);
-        }, 2000);
+        }, 1500);
       } catch (clipboardError) {
         console.error("No se pudo copiar el enlace:", clipboardError);
       }

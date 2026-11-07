@@ -37,12 +37,12 @@ export const Title = styled("h1")({
   fontWeight: 400,
   lineHeight: 1.1,
   "@media (max-width: 600px)": {
-    fontSize: "3rem",
+    fontSize: "2rem",
   },
 });
 
 export const Description = styled("p")({
-  margin: "0 auto 28px",
+  margin: "0 auto 10px",
   maxWidth: "420px",
   textAlign: "center",
   color: "#6b5b5f",
@@ -108,8 +108,8 @@ export const GenerateButton = styled("button")({
 });
 
 export const GeneratedResult = styled("div")({
-  marginTop: "30px",
-  paddingTop: "26px",
+  marginTop: "5px",
+  paddingTop: "5px",
   borderTop: "1px solid #eee0e2",
 });
 
