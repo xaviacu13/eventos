@@ -412,7 +412,7 @@ export function JoseloNormaStyles() {
           justify-content: center;
           gap: 13px;
           letter-spacing: 0.28em;
-          font-size: 0.68rem;
+          font-size: 0.95rem;
         }
 
         .joselo-norma-page .hero-kicker span {
@@ -879,7 +879,7 @@ export function JoseloNormaStyles() {
 
         @media (max-width: 650px) {
           .joselo-norma-page section {
-            padding: 75px 20px;
+            padding: 25px 20px;
           }
 
           .joselo-norma-page .hero {
@@ -994,7 +994,7 @@ export function JoseloNormaStyles() {
 export const CounselorsContainer = styled("div")({
   width: "100%",
   maxWidth: "420px",
-  margin: "25px auto",
+  margin: "10px auto",
   padding: "10px",
   textAlign: "center",
 });

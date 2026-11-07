@@ -14,7 +14,7 @@ export const SponsorsContainer = styled.article<SponsorsContainerProps>(
     margin: "0 auto 10px",
     padding: "8px",
     boxSizing: "border-box",
-    backgroundColor: "#eebbd5",
+    backgroundColor: "#fad4e8",
     borderRadius: "18px",
     border: "1px solid rgba(128, 0, 32, 0.08)",
     boxShadow: "0 4px 14px rgba(61, 32, 37, 0.12)",

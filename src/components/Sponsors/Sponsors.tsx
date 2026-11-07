@@ -67,7 +67,7 @@ const Sponsors = ({
         slotProps={{
           paper: {
             sx: {
-              backgroundColor: "#eebbd5",
+              backgroundColor: "#fad4e8",
               borderRadius: "22px",
               overflow: "hidden",
               margin: 2,
@@ -84,8 +84,8 @@ const Sponsors = ({
               top: 12,
               right: 12,
               zIndex: 2,
-              backgroundColor: "rgba(250,244,226,0.9)",
-              color: "#044003",
+              backgroundColor: "rgba(248, 226, 250, 0.9)",
+              color: "#3b0807",
             }}
           >
             <X size={21} />

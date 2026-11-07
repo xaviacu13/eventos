@@ -34,7 +34,7 @@ const EventLocation = ({
       <LocationTitle>{title}</LocationTitle>
       <LocationAddress>{address}</LocationAddress>
       <LocationTime>
-        <Clock3 size={16} />
+        <Clock3 size={25} />
         <span>{time}</span>
       </LocationTime>
 

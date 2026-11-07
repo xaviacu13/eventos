@@ -77,7 +77,7 @@ export const LocationTime = styled("div")({
   marginTop: "20px",
   color: "#800020",
 
-  fontSize: "0.9rem",
+  fontSize: "1.5rem",
   fontWeight: 600,
 
   "& svg": {

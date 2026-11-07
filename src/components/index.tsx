@@ -7,3 +7,4 @@ export { default as Counselors } from "./Counselors";
 export { default as Sponsors } from "./Sponsors";
 export { default as Hero } from "./Hero";
 export { default as EventLocation } from "./EventLocation";
+export { default as WeddingCalendar } from "./WeddingCalendar";

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Heart } from "lucide-react";
 
 import { CounselorsContainer } from "./styles";
 import { CounselorsModal } from "./components";
@@ -20,20 +21,9 @@ function Counselors({
 
   return (
     <>
-      <CounselorsContainer>
-        <p className="counselors-title">{title}</p>
-
-        {/* 
-        <div className="counselors-divider">
-          <span />
-          <Heart size={16} fill="currentColor" />
-          <span />
-        </div> 
-        */}
-
+      <CounselorsContainer onClick={() => setIsModalOpen(true)}>
         <div
           className="counselors-image"
-          onClick={() => setIsModalOpen(true)}
           role="button"
           tabIndex={0}
           onKeyDown={(event) => {
@@ -42,11 +32,13 @@ function Counselors({
             }
           }}
         >
-          <img
-            src={image}
-            alt={alt}
-            loading="lazy"
-          />
+          <img src={image} alt={alt} loading="lazy" />
+        </div>
+        <p className="counselors-title">{title}</p>
+        <div className="counselors-divider">
+          <span />
+          <Heart size={16} fill="currentColor" />
+          <span />
         </div>
 
         <div className="counselors-names">

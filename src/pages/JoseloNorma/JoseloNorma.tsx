@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 // import type { FormEvent } from "react";
 
 import {
-  CalendarDays,
-  Clock3,
+  // CalendarDays,
+  // Clock3,
   Music2,
   Pause,
   Play,
   Heart,
   Camera,
+  MapPin,
   // Send,
 } from "lucide-react";
 
@@ -21,6 +22,7 @@ import {
   Sponsors,
   Hero,
   EventLocation,
+  WeddingCalendar,
 } from "../../components";
 import weddingPicture from "../../assets/images/profiles/weddingpicture2.png";
 import conIglesia from "../../assets/images/consolers/conIglesia.png";
@@ -309,7 +311,7 @@ const JoseloNorma = () => {
                 image={conCivil}
                 names={["Braulio Porco Estrada", "Cirila Mamani Acuña"]}
               />
-               <HeartDivider width="280px" size={22} />
+              <HeartDivider width="280px" size={22} />
             </CounselorsContainer>
 
             {/* PADRINOS */}
@@ -337,10 +339,14 @@ const JoseloNorma = () => {
             </section>
 
             <section className="intro section" id="invitacion">
-              <p className="eyebrow">UN DÍA PARA RECORDAR</p>
+              <p className="hero-kicker">
+                <span />
+                UN DÍA PARA RECORDAR
+                <span />
+              </p>
 
               <h2>
-                ¡Nos encantaría
+                ¡Queremos
                 <br />
                 <em>compartirlo contigo!</em>
               </h2>
@@ -350,38 +356,24 @@ const JoseloNorma = () => {
                 con las personas que queremos. Nos hace mucha ilusión invitarte
                 a celebrar el comienzo de esta nueva etapa de nuestras vidas.
               </p>
+              <WeddingCalendar />
 
-              <div className="date-chip">
+              {/* <div className="date-chip">
                 <CalendarDays size={19} />
                 <span>{CONFIG.dateLabel}</span>
                 <i />
                 <Clock3 size={18} />
                 <span>{CONFIG.timeLabel}</span>
-              </div>
-            </section>
-
-            {/* CUENTA REGRESIVA */}
-
-            <section className="countdown-section section">
-              <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
-
-              <h2>Falta muy poco</h2>
-
-              <Countdown />
-
-              <p className="small-note">
-                Cada segundo nos acerca a un día muy especial.
-              </p>
+              </div> */}
             </section>
 
             {/* UBICACIONES */}
 
             <section className="events section">
-              <p className="eyebrow">NOS ENCONTRAMOS EN</p>
-
-              <h2>
-                Un día, <em>dos momentos</em>
-              </h2>
+              <p className="eyebrow">
+              <MapPin size={15} />
+                NOS ENCONTRAMOS EN:
+              </p>
               <LocationContainer>
                 <EventLocation
                   kind="CEREMONIA"
@@ -399,6 +391,20 @@ const JoseloNorma = () => {
                   time="21:00 h"
                 />
               </LocationContainer>
+            </section>
+
+            {/* CUENTA REGRESIVA */}
+
+            <section className="countdown-section section">
+              <p className="eyebrow">LA CUENTA REGRESIVA COMIENZA</p>
+
+              <h2>Falta muy poco</h2>
+
+              <Countdown />
+
+              <p className="small-note">
+                Cada segundo nos acerca a un día muy especial.
+              </p>
             </section>
 
             {/* GALERÍA */}
