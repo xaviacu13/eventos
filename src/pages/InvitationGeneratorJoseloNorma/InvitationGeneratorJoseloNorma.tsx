@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Copy, ExternalLink, Send, Check, Plus } from "lucide-react";
 
 import {
@@ -28,16 +28,12 @@ const InvitationGeneratorJoseloNorma = () => {
   const [generatedUrl, setGeneratedUrl] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const generateInvitation = () => {
-    const name = guestName.trim();
-
-    if (!name) return;
-
-    const url = `${BASE_URL}?invitado=${encodeURIComponent(name)}`;
-
-    setGeneratedUrl(url);
-    setCopied(false);
-  };
+  useEffect(() => {
+    if (!guestName.trim()) {
+      setGeneratedUrl("");
+      setCopied(false);
+    }
+  }, [guestName]);
 
   const copyInvitation = async () => {
     if (!generatedUrl) return;
@@ -118,6 +114,20 @@ const InvitationGeneratorJoseloNorma = () => {
         console.error("No se pudo copiar el enlace:", clipboardError);
       }
     }
+  };
+
+  const generateInvitation = () => {
+    const name = guestName.trim();
+
+    if (!name) {
+      setGeneratedUrl("");
+      return;
+    }
+
+    const url = `${BASE_URL}?invitado=${encodeURIComponent(name)}`;
+
+    setGeneratedUrl(url);
+    setCopied(false);
   };
 
   const resetInvitation = () => {
