@@ -141,7 +141,7 @@ const JoseloNorma = () => {
 
     try {
       if (audio.currentTime === 0) {
-        audio.currentTime = 13;
+        audio.currentTime = 2.8;
       }
 
       await audio.play();
