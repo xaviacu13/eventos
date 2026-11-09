@@ -75,7 +75,7 @@ const InvitationGeneratorJoseloNorma = () => {
 
       const shareData = {
         title: "Invitación de José Luis & Norma",
-        text: `${guestName}\n}`,
+        text: `${guestName}\n`,
         url: generatedUrl,
         files: [file],
       };
