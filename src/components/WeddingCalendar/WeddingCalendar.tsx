@@ -56,7 +56,7 @@ const WeddingCalendar = () => {
       </div>
 
       <p className="calendar-message">
-        ¡El día que comienza nuestra historia juntos!
+        ¡El día que comienza nueva historia juntos!
       </p>
     </CalendarContainer>
   );
