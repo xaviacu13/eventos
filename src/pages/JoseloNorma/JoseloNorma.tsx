@@ -297,7 +297,7 @@ const JoseloNorma = () => {
             <CounselorsContainer>
               <p className="hero-kicker">
                 <span />
-                NUESTOS CONSEJEROS:
+                NUESTROS CONSEJEROS:
                 <span />
               </p>
               <Counselors
