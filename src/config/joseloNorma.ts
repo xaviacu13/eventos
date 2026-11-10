@@ -17,6 +17,10 @@ import g3 from "../assets/images/gallery/g3.png";
 import g4 from "../assets/images/gallery/g4.png";
 import g5 from "../assets/images/gallery/g5.png";
 import g6 from "../assets/images/gallery/g6.png";
+import g7 from "../assets/images/gallery/g7.png";
+import g8 from "../assets/images/gallery/g8.png";
+import g10 from "../assets/images/gallery/g10.png";
+import g11 from "../assets/images/gallery/g11.png";
 
 type Sponsor = {
   id: number;
@@ -155,5 +159,9 @@ export const CONFIG: {
     { src: g4, alt: "Imagen 4" },
     { src: g5, alt: "Imagen 5" },
     { src: g6, alt: "Imagen 6" },
+    { src: g7, alt: "Imagen 7" },
+    { src: g8, alt: "Imagen 8" },
+    { src: g10, alt: "Imagen 10" },
+    { src: g11, alt: "Imagen 11" },
   ],
 };
